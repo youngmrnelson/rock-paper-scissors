@@ -35,3 +35,7 @@ function displayWinningMessage() {
 function displayLosingMessage() {
   console.log("Computer wins!");
 }
+
+function displayPlayerChoices(a, b) {
+  console.log(`Human: ${a}\nComputer: ${b}`);
+}
