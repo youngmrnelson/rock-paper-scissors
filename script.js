@@ -15,15 +15,23 @@ function getHumanChoice() {
 function playRound() {
   const humanChoice = getHumanChoice();
   const computerChoice = getComputerChoice();
-  console.log(`Human: ${humanChoice}\nComputer: ${computerChoice}`);
+  evaluateRound(humanChoice, computerChoice);
 }
 
 function increasePlayerScore() {
   humanScore++;
+  displayWinningMessage();
 }
 
 function increaseComputerScore() {
   computerScore++;
+  displayLosingMessage();
 }
 
-console.log(computerScore);
+function displayWinningMessage() {
+  console.log("Human wins!");
+}
+
+function displayLosingMessage() {
+  console.log("Computer wins!");
+}
