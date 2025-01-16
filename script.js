@@ -30,18 +30,25 @@ function increaseComputerScore() {
 
 function displayWinningMessage() {
   console.log("Human wins!");
+  displayPlayerScores();
 }
 
 function displayLosingMessage() {
   console.log("Computer wins!");
+  displayPlayerScores();
 }
 
 function displayDrawMessage() {
   console.log("It's a draw!");
+  displayPlayerScores();
 }
 
 function displayPlayerChoices(a, b) {
   console.log(`Human: ${a}\nComputer: ${b}`);
+}
+
+function displayPlayerScores() {
+  console.log(`Human Score: ${humanScore}\nComputer Score: ${computerScore}`);
 }
 
 function evaluateRound(a, b) {
@@ -60,9 +67,18 @@ function evaluateRound(a, b) {
     increasePlayerScore();
   } else if (a === "scissors" && b === "rock") {
     increaseComputerScore();
-  } else {
+  }
+  if (a === b) {
     displayDrawMessage();
   }
 }
 
-playRound();
+function playGame() {
+  playRound();
+  playRound();
+  playRound();
+  playRound();
+  playRound();
+}
+
+playGame();
