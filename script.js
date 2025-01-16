@@ -11,3 +11,11 @@ function getComputerChoice() {
 function getHumanChoice() {
   return prompt("Rock, Paper, Scissors?", "rock").toLowerCase().trim();
 }
+
+function playRound() {
+  const humanChoice = getHumanChoice();
+  const computerChoice = getComputerChoice();
+  console.log(`Human: ${humanChoice}\nComputer: ${computerChoice}`);
+}
+
+playRound();
