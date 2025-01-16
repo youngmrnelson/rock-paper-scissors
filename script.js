@@ -73,12 +73,23 @@ function evaluateRound(a, b) {
   }
 }
 
+function decideWinner(x, y) {
+  if (x > y) {
+    console.log("Human wins the game!");
+  } else if (y > x) {
+    console.log("Computer wins the game!");
+  } else {
+    console.log("The game ended in a draw...");
+  }
+}
+
 function playGame() {
   playRound();
   playRound();
   playRound();
   playRound();
   playRound();
+  decideWinner(humanScore, computerScore);
 }
 
 playGame();
