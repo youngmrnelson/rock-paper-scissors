@@ -92,4 +92,4 @@ function playGame() {
   decideWinner(humanScore, computerScore);
 }
 
-playGame();
+// playGame();
