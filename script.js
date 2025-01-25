@@ -121,6 +121,7 @@ function displayGameMessage() {
 }
 
 function displayPlayGameBtn() {
+  gameMessage.classList.add("hidden");
   playGameBtn.classList.remove("hidden");
 }
 
@@ -134,17 +135,22 @@ function decideWinner() {
     increaseRound();
   }
   if (gameRoundDisplay.textContent == MAX_ROUNDS) {
-    gameMessage.classList.add("hidden");
     displayPlayGameBtn();
     gameBtns.forEach((btn) => (btn.disabled = true));
   }
 }
 
-// function playGame() {
-//   playRound();
-//   playRound();
-//   playRound();
-//   playRound();
-//   playRound();
-//   decideWinner(humanScore, computerScore);
-// }
+function playGame() {
+  gameRound = 0;
+  humanScore = 0;
+  computerScore = 0;
+  removeGameChoiceIcons();
+  playerPointsDisplay.textContent = humanScore;
+  computerPointsDisplay.textContent = computerScore;
+  gameRoundDisplay.textContent = gameRound;
+  gameMessage.classList.add("hidden");
+  playGameBtn.classList.add("hidden");
+  gameBtns.forEach((btn) => (btn.disabled = false));
+}
+
+playGameBtn.addEventListener("click", playGame);
