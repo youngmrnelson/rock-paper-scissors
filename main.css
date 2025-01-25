@@ -1,5 +1,6 @@
 /* Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mogra&display=swap");
 
 /* General Styling */
 :root {
@@ -9,6 +10,7 @@
   --js-games-red: #f44336;
   --js-games-blue: #03a9f4;
   --js-games-green: #8bc34a;
+  --rps-font: "Mogra", serif;
 }
 
 * {
@@ -44,6 +46,14 @@ li {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.section-margin {
+  margin-block: 128px;
+}
+
+.rps-font {
+  font-family: var(--rps-font);
 }
 
 /* Main Navigation */
@@ -93,6 +103,24 @@ li {
   box-shadow: inset 300px 0 0 0 var(--javascript-black);
 }
 
+/* Game Introduction */
+.game-header {
+  text-align: center;
+}
+
+.game-title {
+  font-size: 48px;
+}
+
+.game-title-icon {
+  font-size: 24px;
+  margin-inline: 8px;
+}
+
+.game-subtitle {
+  color: #555;
+  font-size: 32px;
+}
 /* Footer */
 footer {
   text-align: center;
