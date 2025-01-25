@@ -121,7 +121,58 @@
       </section>
       <!-- Game -->
       <section id="game" class="section-margin-l">
-        <div class="game-container"></div>
+        <div class="game-container">
+          <!-- Game Players -->
+          <div class="game-container-l1">
+            <div class="player-container player-container-a">
+              <i class="fa-solid fa-user player-icon"></i>
+              <p class="game-username rps-font">Player</p>
+            </div>
+            <div class="player-container player-container-b">
+              <p class="game-username rps-font">Computer</p>
+              <i class="fa-solid fa-robot player-icon"></i>
+            </div>
+          </div>
+          <!-- Selected Choices -->
+          <div class="game-container-l1">
+            <p class="player-choice">
+              You Selected: <span class="player-choice-icon">rock</span>
+            </p>
+            <p class="player-choice">
+              <span class="computer-choice-icon">rock</span> :Computer Selected
+            </p>
+          </div>
+          <!-- Game Points -->
+          <div class="game-container-l1">
+            <p class="player-points">
+              Points: <span class="player-points">0</span>
+            </p>
+            <p class="computer-points">
+              <span class="computer-points">0</span> :Points
+            </p>
+          </div>
+          <!-- Game Round -->
+          <p class="game-round rps-font">
+            ROUND: <span class="game-round-number">0</span>
+          </p>
+          <!-- Game Choices -->
+          <div class="game-container-l1">
+            <button class="game-choice">
+              <i class="fa-solid fa-hand-fist"></i>
+            </button>
+            <button class="game-choice">
+              <i class="fa-solid fa-hand"></i>
+            </button>
+            <button class="game-choice">
+              <i class="fa-solid fa-hand-peace"></i>
+            </button>
+          </div>
+          <!-- Game Message -->
+          <div class="flex-center-container">
+            <p class="game-message hidden">Congratulations, you win!</p>
+            <button href="#game" class="btn btn-play">Play Again</button>
+          </div>
+        </div>
       </section>
     </main>
     <!-- Footer -->
