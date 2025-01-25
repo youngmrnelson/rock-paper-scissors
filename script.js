@@ -1,14 +1,32 @@
 "use strict";
 
+// DOM Variables
+const gameBtns = document.querySelectorAll(".game-choice");
+const playerChoiceIcon = document.querySelector(".player-choice-icon");
+const computerChoiceIcon = document.querySelector(".computer-choice-icon");
+const playerPointsDisplay = document.querySelector(".player-points");
+const computerPointsDisplay = document.querySelector(".computer-points");
+const gameRoundDisplay = document.querySelector(".game-round-number");
+const gameMessage = document.querySelector(".game-message");
+const playGameBtn = document.querySelector(".btn-play");
+
+const MAX_ROUNDS = 5;
 const choices = ["rock", "paper", "scissors"];
+// Game Score
 let humanScore = 0;
 let computerScore = 0;
+
+gameBtns.forEach((btn) =>
+  btn.addEventListener("click", (e) => {
+    console.log(e.currentTarget.id);
+  })
+);
 
 function getComputerChoice() {
   return choices[Math.floor(Math.random() * 3)];
 }
 
-function getHumanChoice() {
+function getHumanChoice(e) {
   return prompt("Rock, Paper, Scissors?", "rock").toLowerCase().trim();
 }
 
