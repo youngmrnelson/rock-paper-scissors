@@ -48,8 +48,12 @@ li {
   align-items: center;
 }
 
-.section-margin {
+.section-margin-l {
   margin-block: 128px;
+}
+
+.section-margin-m {
+  margin-block: 96px;
 }
 
 .rps-font {
@@ -66,6 +70,13 @@ li {
 
 .draw-color {
   color: var(--js-games-blue);
+}
+
+.btn {
+  display: inline-block;
+  font-size: 18px;
+  font-weight: bold;
+  border-bottom: 2px solid var(--javascript-yellow);
 }
 
 /* Main Navigation */
@@ -90,7 +101,8 @@ li {
   gap: 32px;
 }
 
-.nav-link {
+.nav-link,
+.btn {
   padding: 2px 6px;
   transition: box-shadow 0.3s ease, color 0.3s ease;
 }
@@ -109,6 +121,10 @@ li {
 
 .nav-link-c:hover {
   box-shadow: inset 300px 0 0 0 var(--js-games-green);
+}
+
+.btn-play:hover {
+  box-shadow: inset 300px 0 0 0 var(--javascript-yellow);
 }
 
 .nav-link-d:hover {
@@ -133,6 +149,37 @@ li {
   color: #555;
   font-size: 32px;
 }
+
+.game-instructions-p {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.game-instructions-p::before {
+  content: "";
+  color: var(--javascript-yellow);
+  font-size: 32px;
+}
+
+.number-one::before {
+  content: "1.";
+}
+
+.number-two::before {
+  content: "2.";
+}
+
+.number-three::before {
+  content: "3.";
+}
+
+.game-instruction-li {
+  list-style: disc;
+  font-size: 18px;
+  margin-block: 16px;
+  margin-left: 24px;
+}
+
 /* Footer */
 footer {
   text-align: center;
