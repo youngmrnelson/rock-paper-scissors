@@ -13,6 +13,7 @@ const gameMessage = document.querySelector(".game-message");
 const playGameBtn = document.querySelector(".btn-play");
 // Global Variables
 const MAX_ROUNDS = 5;
+let gameRound = 0;
 let humanScore = 0;
 let computerScore = 0;
 
@@ -22,7 +23,6 @@ gameBtns.forEach((btn) =>
     removeGameChoiceIcons();
     let playerChoice = e.currentTarget.id;
     let computerChoice = getComputerChoice();
-
     if (e.currentTarget.id === "rock") {
       playerChoiceIcon.classList.add("fa-hand-fist");
     }
@@ -67,26 +67,33 @@ function evaluateRound(a, b) {
   if (a === "rock" && b === "scissors") {
     increasePlayerScore();
     displayWinningMessage();
+    increaseRound();
   } else if (a === "rock" && b === "paper") {
     increaseComputerScore();
     displayLosingMessage();
+    increaseRound();
   }
   if (a === "paper" && b === "rock") {
     increasePlayerScore();
     displayWinningMessage();
+    increaseRound();
   } else if (a === "paper" && b === "scissors") {
     increaseComputerScore();
     displayLosingMessage();
+    increaseRound();
   }
   if (a === "scissors" && b === "paper") {
     increasePlayerScore();
     displayWinningMessage();
+    increaseRound();
   } else if (a === "scissors" && b === "rock") {
     increaseComputerScore();
     displayLosingMessage();
+    increaseRound();
   }
   if (a === b) {
     displayDrawMessage();
+    increaseRound();
   }
 }
 
@@ -123,6 +130,11 @@ function displayDrawMessage() {
 
 function displayGameMessage() {
   gameMessage.classList.remove("hidden");
+}
+
+function increaseRound() {
+  gameRound++;
+  gameRoundDisplay.textContent = gameRound;
 }
 
 // function decideWinner(x, y) {
