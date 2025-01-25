@@ -4,8 +4,10 @@
 const gameBtns = document.querySelectorAll(".game-choice");
 const playerChoiceIcon = document.querySelector(".player-choice-icon");
 const computerChoiceIcon = document.querySelector(".computer-choice-icon");
-const playerPointsDisplay = document.querySelector(".player-points");
-const computerPointsDisplay = document.querySelector(".computer-points");
+const playerPointsDisplay = document.querySelector(".player-points-display");
+const computerPointsDisplay = document.querySelector(
+  ".computer-points-display"
+);
 const gameRoundDisplay = document.querySelector(".game-round-number");
 const gameMessage = document.querySelector(".game-message");
 const playGameBtn = document.querySelector(".btn-play");
@@ -14,9 +16,13 @@ const MAX_ROUNDS = 5;
 let humanScore = 0;
 let computerScore = 0;
 
+// Game Functions
 gameBtns.forEach((btn) =>
   btn.addEventListener("click", (e) => {
     removeGameChoiceIcons();
+    let playerChoice = e.currentTarget.id;
+    let computerChoice = getComputerChoice();
+
     if (e.currentTarget.id === "rock") {
       playerChoiceIcon.classList.add("fa-hand-fist");
     }
@@ -26,7 +32,8 @@ gameBtns.forEach((btn) =>
     if (e.currentTarget.id === "scissors") {
       playerChoiceIcon.classList.add("fa-hand-peace");
     }
-    getComputerChoice();
+
+    evaluateRound(playerChoice, computerChoice);
   })
 );
 
@@ -42,6 +49,8 @@ function getComputerChoice() {
   if (computerChoice === "scissors") {
     computerChoiceIcon.classList.add("fa-hand-peace");
   }
+
+  return computerChoice;
 }
 
 function removeGameChoiceIcons() {
@@ -53,66 +62,68 @@ function removeGameChoiceIcons() {
   );
 }
 
+function evaluateRound(a, b) {
+  // displayPlayerChoices(a, b);
+  if (a === "rock" && b === "scissors") {
+    increasePlayerScore();
+    displayWinningMessage();
+  } else if (a === "rock" && b === "paper") {
+    increaseComputerScore();
+    displayLosingMessage();
+  }
+  if (a === "paper" && b === "rock") {
+    increasePlayerScore();
+    displayWinningMessage();
+  } else if (a === "paper" && b === "scissors") {
+    increaseComputerScore();
+    displayLosingMessage();
+  }
+  if (a === "scissors" && b === "paper") {
+    increasePlayerScore();
+    displayWinningMessage();
+  } else if (a === "scissors" && b === "rock") {
+    increaseComputerScore();
+    displayLosingMessage();
+  }
+  if (a === b) {
+    displayDrawMessage();
+  }
+}
+
 // function playRound() {
 //   const humanChoice = getHumanChoice();
 //   const computerChoice = getComputerChoice();
 //   evaluateRound(humanChoice, computerChoice);
 // }
 
-// function increasePlayerScore() {
-//   humanScore++;
-//   displayWinningMessage();
-// }
+function increasePlayerScore() {
+  humanScore++;
+  playerPointsDisplay.textContent = humanScore;
+}
 
-// function increaseComputerScore() {
-//   computerScore++;
-//   displayLosingMessage();
-// }
+function increaseComputerScore() {
+  computerScore++;
+  computerPointsDisplay.textContent = computerScore;
+}
 
-// function displayWinningMessage() {
-//   console.log("Human wins!");
-//   displayPlayerScores();
-// }
+function displayWinningMessage() {
+  displayGameMessage();
+  gameMessage.textContent = "You win!";
+}
 
-// function displayLosingMessage() {
-//   console.log("Computer wins!");
-//   displayPlayerScores();
-// }
+function displayLosingMessage() {
+  displayGameMessage();
+  gameMessage.textContent = "You lose!";
+}
 
-// function displayDrawMessage() {
-//   console.log("It's a draw!");
-//   displayPlayerScores();
-// }
+function displayDrawMessage() {
+  displayGameMessage();
+  gameMessage.textContent = "It's a draw!";
+}
 
-// function displayPlayerChoices(a, b) {
-//   console.log(`Human: ${a}\nComputer: ${b}`);
-// }
-
-// function displayPlayerScores() {
-//   console.log(`Human Score: ${humanScore}\nComputer Score: ${computerScore}`);
-// }
-
-// function evaluateRound(a, b) {
-//   displayPlayerChoices(a, b);
-//   if (a === "rock" && b === "scissors") {
-//     increasePlayerScore();
-//   } else if (a === "rock" && b === "paper") {
-//     increaseComputerScore();
-//   }
-//   if (a === "paper" && b === "rock") {
-//     increasePlayerScore();
-//   } else if (a === "paper" && b === "scissors") {
-//     increaseComputerScore();
-//   }
-//   if (a === "scissors" && b === "paper") {
-//     increasePlayerScore();
-//   } else if (a === "scissors" && b === "rock") {
-//     increaseComputerScore();
-//   }
-//   if (a === b) {
-//     displayDrawMessage();
-//   }
-// }
+function displayGameMessage() {
+  gameMessage.classList.remove("hidden");
+}
 
 // function decideWinner(x, y) {
 //   if (x > y) {

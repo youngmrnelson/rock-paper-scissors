@@ -275,6 +275,12 @@ button {
   color: var(--javascript-black);
 }
 
+.game-message {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 32px;
+}
+
 /* Footer */
 footer {
   text-align: center;
