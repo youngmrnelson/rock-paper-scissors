@@ -9,16 +9,28 @@ const computerPointsDisplay = document.querySelector(".computer-points");
 const gameRoundDisplay = document.querySelector(".game-round-number");
 const gameMessage = document.querySelector(".game-message");
 const playGameBtn = document.querySelector(".btn-play");
-
+// Global Variables
 const MAX_ROUNDS = 5;
 const choices = ["rock", "paper", "scissors"];
-// Game Score
 let humanScore = 0;
 let computerScore = 0;
 
 gameBtns.forEach((btn) =>
   btn.addEventListener("click", (e) => {
-    console.log(e.currentTarget.id);
+    playerChoiceIcon.classList.remove(
+      "fa-hand-fist",
+      "fa-hand",
+      "fa-hand-peace"
+    );
+    if (e.currentTarget.id === "rock") {
+      playerChoiceIcon.classList.add("fa-hand-fist");
+    }
+    if (e.currentTarget.id === "paper") {
+      playerChoiceIcon.classList.add("fa-hand");
+    }
+    if (e.currentTarget.id === "scissors") {
+      playerChoiceIcon.classList.add("fa-hand-peace");
+    }
   })
 );
 
