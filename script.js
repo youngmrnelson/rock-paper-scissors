@@ -11,7 +11,6 @@ const gameMessage = document.querySelector(".game-message");
 const playGameBtn = document.querySelector(".btn-play");
 // Global Variables
 const MAX_ROUNDS = 5;
-const choices = ["rock", "paper", "scissors"];
 let humanScore = 0;
 let computerScore = 0;
 
@@ -31,12 +30,32 @@ gameBtns.forEach((btn) =>
     if (e.currentTarget.id === "scissors") {
       playerChoiceIcon.classList.add("fa-hand-peace");
     }
+    getComputerChoice();
   })
 );
 
 function getComputerChoice() {
-  return choices[Math.floor(Math.random() * 3)];
+  const choices = ["rock", "paper", "scissors"];
+  let computerChoice = choices[Math.floor(Math.random() * 3)];
+  computerChoiceIcon.classList.remove(
+    "fa-hand-fist",
+    "fa-hand",
+    "fa-hand-peace"
+  );
+  if (computerChoice === "rock") {
+    computerChoiceIcon.classList.add("fa-hand-fist");
+  }
+  if (computerChoice === "paper") {
+    computerChoiceIcon.classList.add("fa-hand");
+  }
+  if (computerChoice === "scissors") {
+    computerChoiceIcon.classList.add("fa-hand-peace");
+  }
 }
+
+// function getComputerChoice() {
+//   return choices[Math.floor(Math.random() * 3)];
+// }
 
 function getHumanChoice(e) {
   return prompt("Rock, Paper, Scissors?", "rock").toLowerCase().trim();
