@@ -16,11 +16,7 @@ let computerScore = 0;
 
 gameBtns.forEach((btn) =>
   btn.addEventListener("click", (e) => {
-    playerChoiceIcon.classList.remove(
-      "fa-hand-fist",
-      "fa-hand",
-      "fa-hand-peace"
-    );
+    removeGameChoiceIcons();
     if (e.currentTarget.id === "rock") {
       playerChoiceIcon.classList.add("fa-hand-fist");
     }
@@ -37,11 +33,6 @@ gameBtns.forEach((btn) =>
 function getComputerChoice() {
   const choices = ["rock", "paper", "scissors"];
   let computerChoice = choices[Math.floor(Math.random() * 3)];
-  computerChoiceIcon.classList.remove(
-    "fa-hand-fist",
-    "fa-hand",
-    "fa-hand-peace"
-  );
   if (computerChoice === "rock") {
     computerChoiceIcon.classList.add("fa-hand-fist");
   }
@@ -53,92 +44,91 @@ function getComputerChoice() {
   }
 }
 
-// function getComputerChoice() {
-//   return choices[Math.floor(Math.random() * 3)];
+function removeGameChoiceIcons() {
+  playerChoiceIcon.classList.remove("fa-hand-fist", "fa-hand", "fa-hand-peace");
+  computerChoiceIcon.classList.remove(
+    "fa-hand-fist",
+    "fa-hand",
+    "fa-hand-peace"
+  );
+}
+
+// function playRound() {
+//   const humanChoice = getHumanChoice();
+//   const computerChoice = getComputerChoice();
+//   evaluateRound(humanChoice, computerChoice);
 // }
 
-function getHumanChoice(e) {
-  return prompt("Rock, Paper, Scissors?", "rock").toLowerCase().trim();
-}
+// function increasePlayerScore() {
+//   humanScore++;
+//   displayWinningMessage();
+// }
 
-function playRound() {
-  const humanChoice = getHumanChoice();
-  const computerChoice = getComputerChoice();
-  evaluateRound(humanChoice, computerChoice);
-}
+// function increaseComputerScore() {
+//   computerScore++;
+//   displayLosingMessage();
+// }
 
-function increasePlayerScore() {
-  humanScore++;
-  displayWinningMessage();
-}
+// function displayWinningMessage() {
+//   console.log("Human wins!");
+//   displayPlayerScores();
+// }
 
-function increaseComputerScore() {
-  computerScore++;
-  displayLosingMessage();
-}
+// function displayLosingMessage() {
+//   console.log("Computer wins!");
+//   displayPlayerScores();
+// }
 
-function displayWinningMessage() {
-  console.log("Human wins!");
-  displayPlayerScores();
-}
+// function displayDrawMessage() {
+//   console.log("It's a draw!");
+//   displayPlayerScores();
+// }
 
-function displayLosingMessage() {
-  console.log("Computer wins!");
-  displayPlayerScores();
-}
+// function displayPlayerChoices(a, b) {
+//   console.log(`Human: ${a}\nComputer: ${b}`);
+// }
 
-function displayDrawMessage() {
-  console.log("It's a draw!");
-  displayPlayerScores();
-}
+// function displayPlayerScores() {
+//   console.log(`Human Score: ${humanScore}\nComputer Score: ${computerScore}`);
+// }
 
-function displayPlayerChoices(a, b) {
-  console.log(`Human: ${a}\nComputer: ${b}`);
-}
+// function evaluateRound(a, b) {
+//   displayPlayerChoices(a, b);
+//   if (a === "rock" && b === "scissors") {
+//     increasePlayerScore();
+//   } else if (a === "rock" && b === "paper") {
+//     increaseComputerScore();
+//   }
+//   if (a === "paper" && b === "rock") {
+//     increasePlayerScore();
+//   } else if (a === "paper" && b === "scissors") {
+//     increaseComputerScore();
+//   }
+//   if (a === "scissors" && b === "paper") {
+//     increasePlayerScore();
+//   } else if (a === "scissors" && b === "rock") {
+//     increaseComputerScore();
+//   }
+//   if (a === b) {
+//     displayDrawMessage();
+//   }
+// }
 
-function displayPlayerScores() {
-  console.log(`Human Score: ${humanScore}\nComputer Score: ${computerScore}`);
-}
+// function decideWinner(x, y) {
+//   if (x > y) {
+//     console.log("Human wins the game!");
+//   } else if (y > x) {
+//     console.log("Computer wins the game!");
+//   } else {
+//     console.log("The game ended in a draw...");
+//   }
+// }
 
-function evaluateRound(a, b) {
-  displayPlayerChoices(a, b);
-  if (a === "rock" && b === "scissors") {
-    increasePlayerScore();
-  } else if (a === "rock" && b === "paper") {
-    increaseComputerScore();
-  }
-  if (a === "paper" && b === "rock") {
-    increasePlayerScore();
-  } else if (a === "paper" && b === "scissors") {
-    increaseComputerScore();
-  }
-  if (a === "scissors" && b === "paper") {
-    increasePlayerScore();
-  } else if (a === "scissors" && b === "rock") {
-    increaseComputerScore();
-  }
-  if (a === b) {
-    displayDrawMessage();
-  }
-}
-
-function decideWinner(x, y) {
-  if (x > y) {
-    console.log("Human wins the game!");
-  } else if (y > x) {
-    console.log("Computer wins the game!");
-  } else {
-    console.log("The game ended in a draw...");
-  }
-}
-
-function playGame() {
-  playRound();
-  playRound();
-  playRound();
-  playRound();
-  playRound();
-  decideWinner(humanScore, computerScore);
-}
-
-// playGame();
+// function playGame() {
+//   playRound();
+//   playRound();
+//   playRound();
+//   playRound();
+//   playRound();
+//   decideWinner(humanScore, computerScore);
+// }
