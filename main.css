@@ -153,6 +153,7 @@ li {
 .game-instructions-p {
   font-size: 20px;
   font-weight: bold;
+  margin-top: 24px;
 }
 
 .game-instructions-p::before {
@@ -173,11 +174,24 @@ li {
   content: "3.";
 }
 
-.game-instruction-li {
+.game-instructions-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 12px 0 0 24px;
+}
+
+.game-instructions-li {
+  padding: 2px 4px;
   list-style: disc;
   font-size: 18px;
-  margin-block: 16px;
-  margin-left: 24px;
+  border-bottom: dotted 2px transparent;
+}
+
+.game-instructions-li:hover {
+  background-color: #ececec;
+  border-bottom: dotted 2px var(--javascript-yellow);
 }
 
 /* Footer */
