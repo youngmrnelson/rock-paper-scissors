@@ -10,7 +10,7 @@ const computerPointsDisplay = document.querySelector(
 );
 const gameRoundDisplay = document.querySelector(".game-round-number");
 const gameMessage = document.querySelector(".game-message");
-const playGameBtn = document.querySelector(".btn-play");
+const playGameBtn = document.querySelector(".btn-game");
 // Global Variables
 const MAX_ROUNDS = 5;
 let gameRound = 0;
@@ -34,6 +34,7 @@ gameBtns.forEach((btn) =>
     }
 
     evaluateRound(playerChoice, computerChoice);
+    decideWinner();
   })
 );
 
@@ -67,41 +68,28 @@ function evaluateRound(a, b) {
   if (a === "rock" && b === "scissors") {
     increasePlayerScore();
     displayWinningMessage();
-    increaseRound();
   } else if (a === "rock" && b === "paper") {
     increaseComputerScore();
     displayLosingMessage();
-    increaseRound();
   }
   if (a === "paper" && b === "rock") {
     increasePlayerScore();
     displayWinningMessage();
-    increaseRound();
   } else if (a === "paper" && b === "scissors") {
     increaseComputerScore();
     displayLosingMessage();
-    increaseRound();
   }
   if (a === "scissors" && b === "paper") {
     increasePlayerScore();
     displayWinningMessage();
-    increaseRound();
   } else if (a === "scissors" && b === "rock") {
     increaseComputerScore();
     displayLosingMessage();
-    increaseRound();
   }
   if (a === b) {
     displayDrawMessage();
-    increaseRound();
   }
 }
-
-// function playRound() {
-//   const humanChoice = getHumanChoice();
-//   const computerChoice = getComputerChoice();
-//   evaluateRound(humanChoice, computerChoice);
-// }
 
 function increasePlayerScore() {
   humanScore++;
@@ -132,20 +120,25 @@ function displayGameMessage() {
   gameMessage.classList.remove("hidden");
 }
 
+function displayPlayGameBtn() {
+  playGameBtn.classList.remove("hidden");
+}
+
 function increaseRound() {
   gameRound++;
   gameRoundDisplay.textContent = gameRound;
 }
 
-// function decideWinner(x, y) {
-//   if (x > y) {
-//     console.log("Human wins the game!");
-//   } else if (y > x) {
-//     console.log("Computer wins the game!");
-//   } else {
-//     console.log("The game ended in a draw...");
-//   }
-// }
+function decideWinner() {
+  if (gameRoundDisplay.textContent < MAX_ROUNDS) {
+    increaseRound();
+  }
+  if (gameRoundDisplay.textContent == MAX_ROUNDS) {
+    gameMessage.classList.add("hidden");
+    displayPlayGameBtn();
+    gameBtns.forEach((btn) => (btn.disabled = true));
+  }
+}
 
 // function playGame() {
 //   playRound();

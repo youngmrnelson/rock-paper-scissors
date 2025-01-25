@@ -102,6 +102,7 @@ button {
 .hidden {
   display: none;
 }
+
 /* Main Navigation */
 .nav-logo {
   color: #fff;
@@ -217,7 +218,8 @@ button {
   border-bottom: dotted 2px var(--javascript-yellow);
 }
 
-.btn-play {
+.btn-play,
+.btn-game {
   margin-top: 32px;
 }
 
